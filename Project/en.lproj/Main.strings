@@ -1,0 +1,9 @@
+
+/* Class = "UILabel"; text = "Попробуйте угадать число : 89"; ObjectID = "ehH-md-roK"; */
+"ehH-md-roK.text" = "Попробуйте угадать число : 89";
+
+/* Class = "UIButton"; configuration.title = "Выбрать"; ObjectID = "tRc-T6-GpY"; */
+"tRc-T6-GpY.configuration.title" = "Выбрать";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "tRc-T6-GpY"; */
+"tRc-T6-GpY.normalTitle" = "Button";
