@@ -29,7 +29,7 @@ class MainViewController: UIViewController {
     //// Общее количество очков играка
     var score: Int = 0
     
-    var round: Int = 0
+    var round: Int = 1
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -64,6 +64,10 @@ class MainViewController: UIViewController {
             print("Вы выбрали число \(sliderValueInt)")
             
         }
+        round += 1
+        roundLabel.text = "Раунд: " + String(round)
+        guessNumber = Int.random(in: 1...100)
+        guessNumberLabel.text = "Попробуйте угадать число: \(guessNumber)"
         updateRound()
         
     }
@@ -88,8 +92,7 @@ class MainViewController: UIViewController {
         }
     
     func updateRound(){
-        round = round + 1
-        roundLabel.text = "Раунд: " + String(round)
+        
         
         if round >= 10 {
             round = 0
