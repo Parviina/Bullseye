@@ -11,14 +11,9 @@ class MainViewController: UIViewController {
 
     @IBOutlet weak var slider: UISlider!
     @IBOutlet weak var button: UIButton!
-    
     @IBOutlet weak var guessNumberLabel: UILabel!
-    
     @IBOutlet weak var restorebutton: UIButton!
-    
     @IBOutlet weak var scoreLabel: UILabel!
-    
-
     @IBOutlet weak var roundLabel: UILabel!
 
     
@@ -38,6 +33,8 @@ class MainViewController: UIViewController {
         
         slider.setThumbImage(normalThumbImage, for: .normal)
         slider.setThumbImage(highlitedThumbImage, for: .highlighted)
+        setUp()
+        
         // Do any additional setup after loading the view.
         
         guessNumberLabel.text = "Попробуйте угадать число: \(guessNumber)"
@@ -70,6 +67,7 @@ class MainViewController: UIViewController {
         guessNumberLabel.text = "Попробуйте угадать число: \(guessNumber)"
         updateRound()
         
+        
     }
 
 
@@ -77,6 +75,8 @@ class MainViewController: UIViewController {
         slider.value = 50
         guessNumber = Int.random(in: 1...100)
         guessNumberLabel.text = "Попробуйте угадать число: \(guessNumber)"
+        round = 0
+        roundLabel.text = "Раунд: " + String(round)
     }
     
     func setUp() {
@@ -88,15 +88,41 @@ class MainViewController: UIViewController {
           //updateGuessingNumber()
          
          ///3. Обнуляем очки
+        score = 0
         scoreLabel.text = "Очки: " + String(score)
+        
+    round = 1
+        roundLabel.text = "Раунд 1"
         }
     
     func updateRound(){
         
         
-        if round >= 10 {
+        if round >= 11 {
             round = 0
+            roundLabel.text = "Раунд: " + String(round)
+            setUp()
+            showResults()
+            
+            
         }
+    }
+    func showResults() {
+        ///creating alert
+        let alert: UIAlertController = UIAlertController(title: "Результаты", message: "Вы заработали \(score) очков", preferredStyle: .alert)
+        
+        ///created a button for alert
+        let okButton: UIAlertAction = UIAlertAction(title: "Начать сначала", style: .default, handler: { _ in
+            ///action when button to alert
+        print("You pressed the button")
+            self.setUp()
+        })
+        ///added button to alert
+        alert.addAction(okButton)
+        
+        //displayed alert on the screen
+        present(alert, animated: true)
+        
     }
     
     }
